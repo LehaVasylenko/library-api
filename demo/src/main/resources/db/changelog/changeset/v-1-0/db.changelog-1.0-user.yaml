@@ -1,0 +1,45 @@
+# src/main/resources/db/changelog/db.changelog-1.0-user.yaml
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Vasylenko_O
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: pass
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: pass_enc
+                  type: varchar(255)
+              - column:
+                  name: role
+                  type: varchar(255)
+              - column:
+                  name: registration_date
+                  type: datetime
+      rollback:
+        - dropTable:
+            tableName: users

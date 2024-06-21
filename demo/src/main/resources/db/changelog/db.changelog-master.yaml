@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/v-1-0/db.changelog-1.0-user.yaml
+  - include:
+      file: db/changelog/changeset/v-1-0/db.changelog-1.0-book.yaml
+  - include:
+      file: db/changelog/changeset/v-1-0/db.changelog-1.0-busybook.yaml
+  - include:
+      file: db/changelog/changeset/v-1-0/db.changelog-1.0-bugreport.yaml

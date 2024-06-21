@@ -1,0 +1,47 @@
+# src/main/resources/db/changelog/db.changelog-1.0-book.yaml
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Vasylenko_O
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: book_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: genre
+                  type: varchar(255)
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: isbn
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: publish_date
+                  type: date
+              - column:
+                  name: copies_available
+                  type: int
+      rollback:
+        - dropTable:
+            tableName: book

@@ -1,0 +1,31 @@
+# src/main/resources/db/changelog/db.changelog-1.0-bugreport.yaml
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Vasylenko_O
+      changes:
+        - createTable:
+            tableName: bug_reports
+            columns:
+              - column:
+                  name: report_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_name
+                  type: varchar(255)
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: subject
+                  type: varchar(255)
+              - column:
+                  name: report_link
+                  type: text
+      rollback:
+        - dropTable:
+            tableName: bug_reports

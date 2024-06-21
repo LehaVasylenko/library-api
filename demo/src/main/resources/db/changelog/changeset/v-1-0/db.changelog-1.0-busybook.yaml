@@ -1,0 +1,47 @@
+# src/main/resources/db/changelog/db.changelog-1.0-busybook.yaml
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Vasylenko_O
+      changes:
+        - createTable:
+            tableName: busy_books
+            columns:
+              - column:
+                  name: busy_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: book_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_start
+                  type: datetime
+              - column:
+                  name: date_end
+                  type: datetime
+        - addForeignKeyConstraint:
+            constraintName: fk_busy_books_user_id
+            baseTableName: busy_books
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: user_id
+        - addForeignKeyConstraint:
+            constraintName: fk_busy_books_book_id
+            baseTableName: busy_books
+            baseColumnNames: book_id
+            referencedTableName: books
+            referencedColumnNames: book_id
+      rollback:
+        - dropTable:
+            tableName: busy_books
